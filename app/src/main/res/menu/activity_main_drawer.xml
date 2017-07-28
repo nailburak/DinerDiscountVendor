@@ -5,34 +5,42 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
+            android:id="@+id/nav_day"
+            android:checked="true"
+            android:icon="@drawable/ic_view_day_black_24dp"
+            android:title="Day" />
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/nav_week"
+            android:icon="@drawable/ic_view_week_black_24dp"
+            android:title="Week" />
+
+        <item
+            android:id="@+id/nav_month"
+            android:icon="@drawable/ic_view_module_black_24dp"
+            android:title="Month" />
+
+        <item
+            android:id="@+id/nav_verify_discount"
+            android:icon="@drawable/ic_check_black_24dp"
+            android:title="Verify Discount" />
+
+        <item
+            android:id="@+id/nav_add_user"
+            android:icon="@drawable/ic_person_add_black_24dp"
+            android:title="Add User" />
+
+
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Settings" />
+
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help_black_24dp"
+            android:title="Help" />
+    </group>
 
 </menu>

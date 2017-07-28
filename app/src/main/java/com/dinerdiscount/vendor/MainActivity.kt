@@ -1,6 +1,6 @@
 package com.dinerdiscount.vendor
 
-import android.app.Fragment
+import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -13,7 +13,6 @@ import android.view.MenuItem
 import com.dinerdiscount.vendor.fragments.TodaysDiscountFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,11 +21,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
@@ -34,10 +28,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        val transaction : FragmentTransaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.content_main_frame_layout, TodaysDiscountFragment())
-        transaction.commit()
-
+        fragment(TodaysDiscountFragment())
     }
 
     override fun onBackPressed() {
@@ -67,27 +58,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
+            R.id.nav_day -> fragment(TodaysDiscountFragment())
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun fragment(fragment: Fragment){
+        val transaction : FragmentTransaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.content_main_frame_layout, fragment)
+        transaction.commit()
     }
 }

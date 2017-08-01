@@ -1,0 +1,68 @@
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.preference.PreferenceCategory
+        android:title="General">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/master_switch"
+        android:title="Master switch" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/scan_discounts"
+        android:title="Scan discounts" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/allow_your_users_to_edit_discounts"
+        android:title="Allow your users to edit discounts" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/send_discount_updates"
+        android:title="Send discount updates" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/receive_notice_of_activated_discounts"
+        android:title="Receive notice of activated discounts" />
+
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
+        android:title="About">
+
+        <Preference
+            android:selectable="false"
+            android:summary="About Us Summary" />
+
+        <Preference
+            android:summary="1.0"
+            android:title="Version" />
+
+        <Preference
+            android:key="Send Feedback"
+            android:summary="Got any queries? We are happy to help!"
+            android:title="Send Feedback" />
+
+        <!-- preference opens url in browser -->
+        <Preference
+            android:summary="View frequently asked questions"
+            android:title="FAQ">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://dinerdiscount.com" />
+        </Preference>
+
+        <Preference android:title="Privacy Policy">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://dinerdiscount.com" />
+        </Preference>
+
+        <Preference android:title="Terms &amp; Conditions">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://dinerdiscount.com" />
+        </Preference>
+
+    </android.support.v7.preference.PreferenceCategory>
+</android.support.v7.preference.PreferenceScreen>

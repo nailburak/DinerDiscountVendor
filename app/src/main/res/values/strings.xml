@@ -6,6 +6,14 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Settings -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="master_switch">master_switch</string>
+    <string name="scan_discounts">scan_discounts</string>
+    <string name="allow_your_users_to_edit_discounts">allow_your_users_to_edit_discounts</string>
+    <string name="send_discount_updates">send_discount_updates</string>
+    <string name="receive_notice_of_activated_discounts">receive_notice_of_activated_discounts</string>
+
+
+    <string name="db_users">users</string>
 </resources>

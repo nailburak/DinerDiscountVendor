@@ -10,20 +10,18 @@ class VerifyDiscountFragment : Fragment() {
 
     var data = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val r = inflater?.inflate(R.layout.fragment_custom_date, container, false)
 
         if (arguments != null) {
             data = arguments.getString("data")
             Log.wtf("data", data)
         }
 
-    }
+        activity.title = "Verify Discounts"
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val r = inflater?.inflate(R.layout.fragment_verify_discount, container, false)
-
-
+        Log.wtf("hey", "heyyyy")
 
         return r
     }

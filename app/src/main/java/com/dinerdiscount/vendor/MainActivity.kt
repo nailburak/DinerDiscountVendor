@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.dinerdiscount.vendor.fragments.CustomDateFragment
 import com.dinerdiscount.vendor.fragments.SettingsFragment
 import com.dinerdiscount.vendor.fragments.TodaysDiscountFragment
 import com.dinerdiscount.vendor.fragments.VerifyDiscountFragment
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragment(TodaysDiscountFragment(), null, TODAYS_DISCOUNTS)
     }
 
+    override fun onResume() {
+        super.onResume()
+        fragment(TodaysDiscountFragment(), null, TODAYS_DISCOUNTS)
+    }
+
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -76,6 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_day -> fragment(TodaysDiscountFragment(), null, TODAYS_DISCOUNTS)
+            R.id.nav_week -> fragment(CustomDateFragment(), null, "s")
             R.id.nav_verify_discount -> verifyDiscount()
             R.id.nav_add_user -> supportFragmentManager.beginTransaction().remove(TodaysDiscountFragment()).commit()
             R.id.nav_settings -> fragment(SettingsFragment(), null, SETTINGS)
@@ -123,7 +130,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (requestCode == GO_SCAN_ACTIVITY && resultCode == Activity.RESULT_OK){
             if (data != null) {
                 val barcode: Barcode =  data.getParcelableExtra("barcode")
-                fragment(VerifyDiscountFragment(), barcode.displayValue, VERIFY_DISCOUNT)
+                fragment(CustomDateFragment(), barcode.displayValue, VERIFY_DISCOUNT)
             }
         }
     }

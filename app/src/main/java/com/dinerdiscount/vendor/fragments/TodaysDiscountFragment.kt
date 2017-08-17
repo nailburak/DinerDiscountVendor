@@ -67,7 +67,7 @@ class TodaysDiscountFragment : Fragment() {
                         db.child("discounts").addListenerForSingleValueEvent(
                                 object : ValueEventListener {
                                     override fun onDataChange(p1: DataSnapshot) {
-                                        if (!p1.hasChild(todayDate()) && time(today()) < time(user?.close)){
+                                        if (!p1.hasChild(todayDate()) && time(today()) < time(user?.close)) {
 
                                             val newDb = db.child("discounts").child(todayDate())
 
@@ -79,14 +79,14 @@ class TodaysDiscountFragment : Fragment() {
                                             var iClose = close[0].toInt()
                                             var iCloseMin = close[1].toInt()
 
-                                            for (x in 0..48){
+                                            for (x in 0..48) {
                                                 val push = newDb.push()
                                                 push.child("hour").setValue(iStart.toString() + ":" + iStartMin.toString() + if (iStartMin == 0) "0" else "")
                                                 push.child("discountRate").setValue(0)
                                                 if (iStart == iClose && iStartMin == iCloseMin)
                                                     return
                                                 iStartMin = if (iStartMin == 0) 30 else 0
-                                                iStart += if (iStartMin == 0 && (user?.close != (iStart.toString() + ":" + iStartMin + "0")) ) 1 else 0
+                                                iStart += if (iStartMin == 0 && (user?.close != (iStart.toString() + ":" + iStartMin + "0"))) 1 else 0
                                             }
                                         }
                                     }
@@ -96,6 +96,7 @@ class TodaysDiscountFragment : Fragment() {
 
                                 }
                         )
+
                     }
 
                 }
@@ -175,7 +176,7 @@ class TodaysDiscountFragment : Fragment() {
                             }
                         }
                 )
-            } catch (e: KotlinNullPointerException){ }
+            } catch (e: Exception){ }
 
         }
     }

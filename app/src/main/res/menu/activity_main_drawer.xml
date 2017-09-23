@@ -11,14 +11,10 @@
             android:title="Day" />
 
         <item
-            android:id="@+id/nav_week"
-            android:icon="@drawable/ic_view_week_black_24dp"
-            android:title="Week" />
+            android:id="@+id/nav_date"
+            android:icon="@drawable/ic_date_range_black_24dp"
+            android:title="Date Picker" />
 
-        <item
-            android:id="@+id/nav_month"
-            android:icon="@drawable/ic_view_module_black_24dp"
-            android:title="Month" />
 
         <item
             android:id="@+id/nav_verify_discount"

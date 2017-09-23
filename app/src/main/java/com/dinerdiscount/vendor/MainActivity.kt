@@ -16,10 +16,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import com.dinerdiscount.vendor.fragments.CustomDateFragment
-import com.dinerdiscount.vendor.fragments.SettingsFragment
-import com.dinerdiscount.vendor.fragments.TodaysDiscountFragment
-import com.dinerdiscount.vendor.fragments.VerifyDiscountFragment
+import com.dinerdiscount.vendor.fragments.*
 import com.google.android.gms.vision.barcode.Barcode
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -65,6 +62,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        val item = menu.findItem(R.id.action_repeat)
+        item.isVisible = false
         return true
     }
 
@@ -73,7 +72,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -82,7 +80,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_day -> fragment(TodaysDiscountFragment(), null, TODAYS_DISCOUNTS)
-            R.id.nav_week -> fragment(CustomDateFragment(), null, "s")
+            R.id.nav_date -> fragment(CustomDateFragment(), null, "s")
             R.id.nav_verify_discount -> verifyDiscount()
             R.id.nav_add_user -> supportFragmentManager.beginTransaction().remove(TodaysDiscountFragment()).commit()
             R.id.nav_settings -> fragment(SettingsFragment(), null, SETTINGS)

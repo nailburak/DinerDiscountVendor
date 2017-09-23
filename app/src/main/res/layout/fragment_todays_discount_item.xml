@@ -15,6 +15,10 @@
         android:id="@+id/todays_discount_item_seek_bar"
         android:layout_width="match_parent"
         android:max="10"
+        android:progress="1"
+        android:maxHeight="10dp"
+        android:progressDrawable="@drawable/seekbar_progress"
+        android:thumb="@drawable/seekbar_thumb"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 

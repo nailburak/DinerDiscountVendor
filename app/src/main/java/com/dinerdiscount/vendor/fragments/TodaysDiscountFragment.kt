@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -47,11 +48,37 @@ class TodaysDiscountFragment : Fragment() {
 
         val recycler = r?.findViewById<RecyclerView>(R.id.todays_discount_recycler_view)
         val switch = r?.findViewById<Switch>(R.id.todays_discount_switch)
+        val reset = r?.findViewById<AppCompatButton>(R.id.todays_discount_reset)
 
         recycler(recycler)
         switch(switch)
+        reset(reset)
 
         return r
+    }
+
+    private fun reset(resetBtn: AppCompatButton?) {
+        resetBtn?.setOnClickListener{
+            AlertDialog.Builder(activity)
+                    .setTitle("Reset Discounts")
+                    .setMessage("Do you really want to reset discounts?")
+                    .setPositiveButton("Yes", { dialogInterface, i ->
+                        db.child("discounts").child(todayDate()).addListenerForSingleValueEvent(
+                                object : ValueEventListener {
+                                    override fun onCancelled(p0: DatabaseError?) { }
+
+                                    override fun onDataChange(p0: DataSnapshot) {
+                                        for (snap in p0.children) {
+                                            db.child("discounts").child(todayDate()).child(snap.key)
+                                                    .child("discountRate").setValue(0)
+                                        }
+                                    }
+                                }
+                        )
+                    })
+                    .setNegativeButton("Nah, I am good", { dialogInterface, i -> }).show()
+
+        }
     }
 
     private fun checkHasData() {
